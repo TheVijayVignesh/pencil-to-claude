@@ -1,0 +1,11 @@
+data/
+.DS_Store
+.env*
+node_modules/
+*.log
+*.p12
+*.pem
+*.key
+*.mobileprovision
+launcher/PencilRelay
+*.app/
