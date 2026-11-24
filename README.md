@@ -50,7 +50,7 @@ Security: the relay listens on your LAN and only accepts requests carrying the p
 ## If it stops: `./start.sh`
 
 ```bash
-cd ~/Documents/Projects/Pencil-to-Claude && ./start.sh
+cd path/to/pencil-to-claude && ./start.sh
 ```
 
 Starts or restarts the relay, copies in any edits from this folder, and prints the iPad link.
@@ -80,6 +80,17 @@ Requirements: macOS with the Claude desktop app, Node 18+, Xcode command‑line 
    ```bash
    grep -m1 -A1 "Open on your iPad" ~/Library/Logs/PencilToClaude.log
    ```
+
+### Try it without Claude (demo mode)
+
+```bash
+DEMO=1 PORT=4420 node server.mjs
+# open http://localhost:4420/?t=demo
+```
+
+`DEMO=1` is a dry run: the relay receives each drawing and reports it as received, but never touches the
+clipboard, never opens or pastes into Claude, and saves drawings to a temp folder instead of `data/`.
+The pairing token is fixed to `demo` (override with `DEMO_TOKEN`). No permissions are needed.
 
 To run it ad hoc instead (e.g. while developing): `node server.mjs` (stop the LaunchAgent first, since both use port 8787).
 
